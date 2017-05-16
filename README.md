@@ -20,12 +20,20 @@ sum(first: number, second: number): number
 identity<T>(value: T): T
 ```
 
-泛型也能被定义在类及其变量上。一个为你保存变量的类大概会是这样：
+泛型也能被定义在类及其变量上。一个为你保存变量的类应该会是这样：
 
 ```
 class Box<T> {
   constructor(value: T)
   getValue(): T
+}
+```
+
+为了修改不可变数据，方法将会返回一个新的同类型集合。`this`这个类型表明返回值类型将参照类的类型。例如，当你在一个List上push一个数据时，他将会返回一个新的同类型List：
+
+```
+class List<T> {
+  push(value: T): this
 }
 ```
 
