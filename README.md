@@ -20,5 +20,14 @@ sum(first: number, second: number): number
 identity<T>(value: T): T
 ```
 
+泛型也能被定义在类及其变量上。一个为你保存变量的类大概会是这样：
+
+```
+class Box<T> {
+  constructor(value: T)
+  getValue(): T
+}
+```
+
 
 
