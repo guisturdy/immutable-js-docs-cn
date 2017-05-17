@@ -37,5 +37,114 @@ class List<T> {
 }
 ```
 
+在Immutable.js中，一些方法实现了[迭代](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Iteration_protocols)协议，`Iterable<string>`表示一系列有序的string。在JS中我们一般使用数组（`[]`）来表示一个可迭代类型，在Immutable.js中集合都是可迭代的。
 
+例如要在数据结构中获得深入的值，我们可以使用`getIn`他需要一个Iterable路径：
+
+```
+getIn(path: Iterable<string | number>): any
+```
+
+使用这个方法需要通过一个数组：`data.getIn(["key", 2])`。
+
+注意：所有实力都是使用JavaScript的[ES6](https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript/ECMAScript_2015_support_in_Mozilla)规范，在老旧的浏览器上运行可能需要转换为ES3。
+
+例：
+
+```
+// ES2015
+const mappedFoo = foo.map(x => x * x);
+// ES3
+var mappedFoo = foo.map(function (x) { return x * x; });
+```
+
+### API
+
+##### **fromJS\(\)**
+
+完全地将一个JS对象转或数组转换为不可变的Maps或Lists。
+
+##### **is\(\)**
+
+和`Object.is`类似的相等比较方法，比较两个`Collection`是否有相同的值。
+
+##### hash\(\)
+
+hash\(\)方法是Immutable确认两个值是否相等和决定这些值如何存储的重要依据。传入任何数据，它将返回一个31位的整形。
+
+##### isImmutable\(\)
+
+返回True表示这是一个不可变数据（Collection或Record）。
+
+##### isCollection\(\)
+
+返回True表示这是一个集合（Collection）或集合的子类。
+
+##### isKeyed\(\)
+
+返回True表示这是Collection.key或其子类。
+
+##### isIndexed\(\)
+
+返回True表示这是Collection.isIndexed或其子类。
+
+##### isAssociative\(\)
+
+返回True表示这是Keyed或者Indexed Collection。
+
+##### isOrdered\(\)
+
+返回True表示这是一个Collection同时迭代索引设置正确。Collection.indexed、OrderedMap和OrderedSet会返回True。
+
+##### isValueObject\(\)
+
+返回True表示这是个JS对象并且同时拥有`equals()`和`hashCode()`方法。
+
+#### ValueObject
+
+##### List
+
+List是有序的密集型集合，类似于JS的数组（Array）。
+
+##### Map
+
+不可变Map是无序的可持久化的Collection.Keyed\(key, value\)键值对，存取复杂度为`O(log32 N)`。
+
+##### OrderedMap
+
+一种能够保证迭代顺序为元素进入顺序的Map。
+
+##### Set
+
+一种存取复杂度为`O(log32 N)`的无重复值的集合。
+
+##### OrderedSet
+
+一种能够保证迭代顺序为元素添加\([add](#)\)顺序的Set。
+
+##### Stack
+
+Stack（栈）是一种支持复杂度为`O(1)`的高效添加和删除数据的集合，在栈顶添加和删除数据使用`unshift(v)`和`shift()`。
+
+##### Range\(\)
+
+返回由Seq.Indexed指明的从start到end由step指定增量的数值（包含start，不包含end），默认值start为0，step
+
+为1，end为无穷大。当start与end相等时，返回一个空范围。
+
+##### Repeat\(\)
+
+返回右Seq.Indexed指明的重复times次数的value，当times未定义时，返回值为无穷Seq的value。
+
+##### Record
+
+建立一个继承自Record的新类型。它类似于JS的对象，但需要明确指定可设置的键及其对应的值。
+
+##### Seq
+
+相当于一系列值，但不能具体表现为某种数据结构。
+
+##### Collection
+
+Collection是一组可迭代的键值对集合，它也是所有immutable的基类，确保它们能使用集合的方法（如map，filter）。
 
