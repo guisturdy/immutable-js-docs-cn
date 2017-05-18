@@ -66,7 +66,7 @@ var mappedFoo = foo.map(function (x) { return x * x; });
 
 ##### is\(\) {#is}
 
-和`Object.is`类似的相等比较方法，比较两个`Collection`是否有相同的值。
+和[`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is)类似的相等比较方法，比较两个[`Collection`](#collection)是否有相同的值。
 
 ##### hash\(\)
 
@@ -144,7 +144,7 @@ Stack（栈）是一种支持复杂度为`O(1)`的高效添加和删除数据的
 
 相当于一系列值，但不能具体表现为某种数据结构。
 
-##### Collection
+##### Collection {#collection}
 
 Collection是一组可迭代的键值对集合，它也是所有immutable的基类，确保它们能使用集合的方法（如map，filter）。
 
