@@ -4,7 +4,7 @@
 
 ### 阅前注意
 
-为了更好地介绍Immutable.js多样的API和返回值，本文档将基于静态类型的JS（如Flow、TypeScript）。你_不必使用这些_类型检查工具来使用Immutable.js，然而使用与它们相似的语法能让你更透彻地理解这些API。
+为了更好地介绍Immutable.js多样的API和返回值，本文档将基于静态类型的JS（如[Flow](https://flowtype.org/)、[TypeScript](http://www.typescriptlang.org/)）。你_不必使用这些_类型检查工具来使用Immutable.js，然而使用与它们相似的语法能让你更透彻地理解这些API。
 
 ###### 一些例子以及阅读指南
 
@@ -60,11 +60,11 @@ var mappedFoo = foo.map(function (x) { return x * x; });
 
 ### API
 
-##### **fromJS\(\)**
+##### [fromJS\(\)](#fromjs)
 
 完全地将一个JS对象转或数组转换为不可变的Maps或Lists。
 
-##### **is\(\)**
+##### is\(\) {#is}
 
 和`Object.is`类似的相等比较方法，比较两个`Collection`是否有相同的值。
 
