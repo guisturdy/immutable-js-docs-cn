@@ -1,5 +1,5 @@
 # Summary
 
-* [immutable.js中文文档](README.md)
+* [Immutable.js 中文文档](README.md)
 * [fromJS\(\)](fromjs.md)
 
