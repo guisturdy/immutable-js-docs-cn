@@ -17,6 +17,8 @@ assert(Object.is(map1, map2) === false)
 assert(is(map1, map2) === true)
 ```
 
+###### _// 译者注：assert为断言，传入值为false时将报错。_[_Console.assert_](https://developer.mozilla.org/zh-CN/docs/Web/API/Console/assert)
+
 is\(\)不仅仅能比较原始的字符串、数值和不可变集合比如[`Map`](/map.md)和[`Set`](/set.md)，也能比较实现了包含`equals()`和`hashCode()`两个方法的[`ValueObject`](/valueobject.md) 。
 
 注意：和[`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is)不同的是，`Immutable.is`假定`0`和`-0`是相同的，与ES6的Map键值相匹配。
