@@ -64,7 +64,7 @@ var mappedFoo = foo.map(function (x) { return x * x; });
 
 完全地将一个JS对象转或数组转换为不可变的Maps或Lists。
 
-##### is\(\) {#is}
+##### [is\(\)](#is) {#is}
 
 和[`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is)类似的相等比较方法，比较两个[`Collection`](#collection)是否有相同的值。
 
