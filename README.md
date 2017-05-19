@@ -68,7 +68,7 @@ var mappedFoo = foo.map(function (x) { return x * x; });
 
 和[`Object.is`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/is)类似的相等比较方法，比较两个[`Collection`](#collection)是否有相同的值。
 
-##### hash\(\)
+##### [hash\(\)](#hash)
 
 hash\(\)方法是Immutable确认两个值是否相等和决定这些值如何存储的重要依据。传入任何数据，它将返回一个31位的整形。
 

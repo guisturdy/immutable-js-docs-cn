@@ -7,4 +7,5 @@
 * [Map](map.md)
 * [Set](set.md)
 * [ValueObject](valueobject.md)
+* [hash\(\)](hash.md)
 
