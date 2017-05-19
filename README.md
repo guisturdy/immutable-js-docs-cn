@@ -47,7 +47,7 @@ getIn(path: Iterable<string | number>): any
 
 使用这个方法需要通过一个数组：`data.getIn(["key", 2])`。
 
-注意：所有实力都是使用JavaScript的[ES6](https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript/ECMAScript_2015_support_in_Mozilla)规范，在老旧的浏览器上运行可能需要转换为ES3。
+注意：所有实力都是使用JavaScript的[ES6](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/New_in_JavaScript/ECMAScript_2015_support_in_Mozilla)规范，在老旧的浏览器上运行可能需要转换为ES3。
 
 例：
 

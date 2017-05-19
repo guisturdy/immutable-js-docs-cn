@@ -33,9 +33,9 @@ fromJS({ a: {b: [10, 20, 30]}, c: 40}, function (key, value, path) {
 
 如果reviver未提供，那么默认地，Array会转换为List，Object会转换为Map。
 
-事实上，reviver和[`JSON.parse`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse#Example.3A_Using_the_reviver_parameter)参数一致。
+事实上，reviver和[`JSON.parse`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse#Example.3A_Using_the_reviver_parameter)参数一致。
 
-`fromJS`是保守的转换，它只会将能被[`Array.isArray`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray)认证的数组转换为List，只会转换原始的对象（不包含自定义原型）为Map。
+`fromJS`是保守的转换，它只会将能被[`Array.isArray`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray)认证的数组转换为List，只会转换原始的对象（不包含自定义原型）为Map。
 
 注意，当一个JS对象转换为不可变Map时，尽管不可变Map可接受任意类型键值，JS对象的索引永远为字符串，即使你使用简写。
 
