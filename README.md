@@ -66,7 +66,7 @@ var mappedFoo = foo.map(function (x) { return x * x; });
 
 ##### [is\(\)](/is.md)
 
-和[`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is)类似的相等比较方法，比较两个[`Collection`](#collection)是否有相同的值。
+和[`Object.is`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/is)类似的相等比较方法，比较两个[`Collection`](#collection)是否有相同的值。
 
 ##### hash\(\)
 
