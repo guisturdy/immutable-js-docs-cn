@@ -8,4 +8,5 @@
 * [Set](set.md)
 * [ValueObject](valueobject.md)
 * [hash\(\)](hash.md)
+* [isImmutable\(\)](isimmutable.md)
 
