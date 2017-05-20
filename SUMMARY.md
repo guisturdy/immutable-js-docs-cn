@@ -9,4 +9,10 @@
 * [ValueObject](valueobject.md)
 * [hash\(\)](hash.md)
 * [isImmutable\(\)](isimmutable.md)
+* [isCollection\(\)](iscollection.md)
+* [isKeyed\(\)](iskeyed.md)
+* [isIndexed\(\)](isindexed.md)
+* [isAssociative\(\)](isassociative.md)
+* [isOrdered\(\)](isordered.md)
+* [isValueObject\(\)](isvalueobject.md)
 

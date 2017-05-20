@@ -76,7 +76,7 @@ hash\(\)方法是Immutable确认两个值是否相等和决定这些值如何存
 
 返回True表示这是一个不可变数据（Collection或Record）。
 
-##### isCollection\(\)
+##### [isCollection\(\)](/iscollection.md)
 
 返回True表示这是一个集合（Collection）或集合的子类。
 
