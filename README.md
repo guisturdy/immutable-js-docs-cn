@@ -80,23 +80,23 @@ hash\(\)方法是Immutable确认两个值是否相等和决定这些值如何存
 
 返回True表示这是一个集合（Collection）或集合的子类。
 
-##### isKeyed\(\)
+##### [isKeyed\(\)](/iskeyed.md)
 
 返回True表示这是Collection.key或其子类。
 
-##### isIndexed\(\)
+##### [isIndexed\(\)](/isindexed.md)
 
 返回True表示这是Collection.isIndexed或其子类。
 
-##### isAssociative\(\)
+##### [isAssociative\(\)](/isassociative.md)
 
 返回True表示这是Keyed或者Indexed Collection。
 
-##### isOrdered\(\)
+##### [isOrdered\(\)](/isordered.md)
 
 返回True表示这是一个Collection同时迭代索引设置正确。Collection.indexed、OrderedMap和OrderedSet会返回True。
 
-##### isValueObject\(\)
+##### [isValueObject\(\)](/isvalueobject.md)
 
 返回True表示这是个JS对象并且同时拥有`equals()`和`hashCode()`方法。
 
