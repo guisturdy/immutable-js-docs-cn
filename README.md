@@ -72,7 +72,7 @@ var mappedFoo = foo.map(function (x) { return x * x; });
 
 hash\(\)方法是Immutable确认两个值是否相等和决定这些值如何存储的重要依据。传入任何数据，它将返回一个31位的整形。
 
-##### [isImmutable\(\)](#isimmutable)
+##### [isImmutable\(\)](/isimmutable.md)
 
 返回True表示这是一个不可变数据（Collection或Record）。
 
