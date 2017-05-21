@@ -100,7 +100,7 @@ hash\(\)方法是Immutable确认两个值是否相等和决定这些值如何存
 
 返回True表示这是个JS对象并且同时拥有`equals()`和`hashCode()`方法。
 
-#### ValueObject
+#### [ValueObject](/valueobject.md)
 
 ##### List
 
