@@ -14,9 +14,7 @@ class ValueObject
 equals(other: any): boolean
 ```
 
-注意：此方法与`Immutable.is(this,other)`等效。
-
-
+注意：此方法与`Immutable.is(this,other)`等效，为提供链式写法。
 
 ##### hashCode\(\)
 
