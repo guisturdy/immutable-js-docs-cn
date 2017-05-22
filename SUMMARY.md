@@ -15,4 +15,5 @@
 * [isAssociative\(\)](isassociative.md)
 * [isOrdered\(\)](isordered.md)
 * [isValueObject\(\)](isvalueobject.md)
+* [List](list.md)
 
