@@ -6,13 +6,11 @@ List是类似于JS中数组的密集型有序集合。
 class List<T> extends Collection.Indexed<T>
 ```
 
-List是不可变的\(Immutable\)，无限长的，设置和读取的复杂度为O\(log32 N\)，入栈出栈\(push, pop\)复杂度为O\(1\)。
+List是不可变的\(Immutable\)，修改和读取数据的复杂度为O\(log32 N\)，入栈出栈\(push, pop\)复杂度为O\(1\)。
 
 List实现了队列功能，能高效的在队首\(unshift, shift\)或者队尾\(push, pop\)进行元素的添加和删除。
 
 与JS的数组不同，在List中一个未设置的索引值和设置为undefined的索引值是相同的。List\#forEach会从0到size便利所有元素，无论他是否有明确定义。
-
-
 
 ###### 构造函数
 
