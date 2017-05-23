@@ -88,5 +88,41 @@ List.of({x:1}, 2, [3], 4)
 // List [ { x: 1 }, 2, [ 3 ], 4 ]
 ```
 
+###### 成员变量
 
+##### size
+
+```
+size
+```
+
+###### 持久化修改
+
+##### set\(\)
+
+返回一个在`index`位置处值为`value`的新List。如果`index`位置已经定义了值，它将会被替换。
+
+```
+set(index: number, value: T): List<T>
+```
+
+当`index`为负值时，将从List尾部开始索引。`v.set(-1, "value")`设置了List最后一个索引位置的值。
+
+当`index`比原List的`size`大时，返回的新List的`size`将会足够大以包含`index`。
+
+```
+const originalList = List([ 0 ]);
+// List [ 0 ]
+originalList.set(1, 1);
+// List [ 0, 1 ]
+originalList.set(0, 'overwritten');
+// List [ "overwritten" ]
+originalList.set(2, 2);
+// List [ 0, undefined, 2 ]
+
+List().set(50000, 'value').size;
+// 50001
+```
+
+注意：`set`可以在`withMutations`中使用。
 
