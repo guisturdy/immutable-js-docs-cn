@@ -138,7 +138,7 @@ delete(index: number): List<T>
 
 `remove()`
 
-此方法与`list.splice(index, 1)`是同意的。
+此方法与`list.splice(index, 1)`是同义的。
 
 `index`可以为负值，表示从末尾开始计算索引。`v.delete(-1)`将会删除List最后一个元素。
 
@@ -150,6 +150,18 @@ List([ 0, 1, 2, 3, 4 ]).delete(0);
 ```
 
 注意：`delete`不可在`withMutations`中使用。
+
+##### insert\(\)
+
+返回一个`index`处值为`value`总长度加一的新List。并且大于原`index`的索引都会加一。
+
+```
+insert(index: number, value: T): List<T>
+```
+
+此方法与`list.splice(index, 0, value)`同义。
+
+注意：`insert`不可在`withMutations`中使用。
 
 
 
