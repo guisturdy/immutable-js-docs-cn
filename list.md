@@ -149,7 +149,7 @@ List([ 0, 1, 2, 3, 4 ]).delete(0);
 // List [ 1, 2, 3, 4 ]
 ```
 
-注意：`delete`不可在`withMutations`中使用。
+注意：`delete`_不可_在`withMutations`中使用。
 
 ##### insert\(\)
 
@@ -161,7 +161,24 @@ insert(index: number, value: T): List<T>
 
 此方法与`list.splice(index, 0, value)`同义。
 
-注意：`insert`不可在`withMutations`中使用。
+注意：`insert`_不可_在`withMutations`中使用。
+
+##### clear\(\)
+
+返回一个新的长度为0的空List。
+
+```
+clear(): List<T>
+```
+
+例
+
+```
+List([ 1, 2, 3, 4 ]).clear()
+// List []
+```
+
+注意：`clear`可以在`withMutations`中使用。
 
 
 
