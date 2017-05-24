@@ -126,3 +126,30 @@ List().set(50000, 'value').size;
 
 注意：`set`可以在`withMutations`中使用。
 
+##### delete\(\)
+
+返回一个不包含原`index`值总长度减一的新List。并且大于原`index`的索引都会减一。
+
+```
+delete(index: number): List<T>
+```
+
+###### 别名
+
+`remove()`
+
+此方法与`list.splice(index, 1)`是同意的。
+
+`index`可以为负值，表示从末尾开始计算索引。`v.delete(-1)`将会删除List最后一个元素。
+
+注意：`delete`在IE8上使用是不安全的。
+
+```
+List([ 0, 1, 2, 3, 4 ]).delete(0);
+// List [ 1, 2, 3, 4 ]
+```
+
+注意：`delete`不可在`withMutations`中使用。
+
+
+
