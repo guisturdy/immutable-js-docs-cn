@@ -180,5 +180,22 @@ List([ 1, 2, 3, 4 ]).clear()
 
 注意：`clear`可以在`withMutations`中使用。
 
+##### push\(\)
+
+返回一个新的List为旧List末尾添加一个元素值为所传入`value`。
+
+```
+push(...values: Array<T>): List<T>
+```
+
+例
+
+```
+List([ 1, 2, 3, 4 ]).push(5)
+// List [ 1, 2, 3, 4, 5 ]
+```
+
+注意：`push`可以在`withMutations`中使用。
+
 
 
