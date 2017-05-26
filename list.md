@@ -197,5 +197,56 @@ List([ 1, 2, 3, 4 ]).push(5)
 
 注意：`push`可以在`withMutations`中使用。
 
+##### pop\(\)
+
+返回一个新的List为旧List移除最后一个元素。
+
+```
+pop(): List<T>
+```
+
+注意：这与[`Array#pop`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/pop)不同，它返回的是新List而不是被移除元素。使用`last()`方法来获取List最后一个元素。
+
+```
+List([ 1, 2, 3, 4 ]).pop()
+// List[ 1, 2, 3 ]
+```
+
+注意：`pop`可以在`withMutations`中使用。
+
+##### unshift\(\)
+
+返回一个新的List为旧List头部插入所提供的`values`。
+
+```
+unshift(...values: Array<T>): List<T>
+```
+
+例
+
+```
+List([ 2, 3, 4]).unshift(1);
+// List [ 1, 2, 3, 4 ]
+```
+
+注意：`unshift`可以在`withMutations`中使用。
+
+##### shift\(\)
+
+返回一个新的List为旧List移除第一个元素，并且其他元素索引减一。
+
+```
+shift(): List<T>
+```
+
+注意：这与[`Array#shift`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/shift)不同，它返回的是新List而不是被移除元素。使用`first()`方法来获取List最后一个元素。
+
+```
+List([ 0, 1, 2, 3, 4 ]).shift();
+// List [ 1, 2, 3, 4 ]
+```
+
+注意：`shift`可以在`withMutations`中使用。
+
 
 
