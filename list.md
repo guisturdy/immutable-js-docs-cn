@@ -248,5 +248,47 @@ List([ 0, 1, 2, 3, 4 ]).shift();
 
 注意：`shift`可以在`withMutations`中使用。
 
+##### update\(\)
 
+将会返回一个新List，如果指定`index`位置在原List中存在，那么由所提供函数`updater`更新此位置值，否则该位置值设为所提供的`notSetValue`值。 如果只传入了一个参数`updater`，那么`updater`接受的参数为List本身。
+
+```
+update(index: number, notSetValue: T, updater: (value: T) => T): this
+update(index: number, updater: (value: T) => T): this
+update<R>(updater: (value: this) => R): R
+```
+
+**重载**
+
+`Collection#update`
+
+**见**
+
+`Map#update`
+
+`index`可以为负值，表示从尾部开始索引。`v.update(-1)`表示更新最后一个元素。
+
+```
+const list = List([ 'a', 'b', 'c' ])
+const result = list.update(2, val => val.toUpperCase())
+// List [ "a", "b", "C" ]
+```
+
+此方法可以很方便地链式调用一系列普通的方法。RxJS称这为"let"，lodash叫做"thru"。
+
+例，在调用map和filter之后计算List的和：
+
+```
+function sum(collection) {
+  return collection.reduce((sum, x) => sum + x, 0)
+}
+
+List([ 1, 2, 3 ])
+  .map(x => x + 1)
+  .filter(x => x % 2 === 0)
+  .update(sum)
+// 6
+```
+
+注意：`update(index)`可以在`withMutations`中使用。
 
