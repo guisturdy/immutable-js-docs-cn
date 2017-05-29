@@ -292,3 +292,69 @@ List([ 1, 2, 3 ])
 
 注意：`update(index)`可以在`withMutations`中使用。
 
+##### merge\(\)
+
+注意：`merge`可以在`withMutations`中使用。
+
+```
+merge(...collections: Array<Collection.Indexed<T> | Array<T>>): this
+```
+
+见
+
+`Map#merge`
+
+##### mergeWith\(\)
+
+注意：`mergeWith`可以在`withMutations`中使用。
+
+```
+mergeWith(
+merger: (oldVal: T, newVal: T, key: number) => T,
+...collections: Array<Collection.Indexed<T> | Array<T>>
+): this
+```
+
+见
+
+`Map#mergeWith`
+
+##### mergeDeep\(\)
+
+注意：`mergeDeep`可以在`withMutations`中使用。
+
+```
+mergeDeep(...collections: Array<Collection.Indexed<T> | Array<T>>): this
+```
+
+见
+
+`Map#mergeDeep`
+
+##### mergeDeepWith\(\)
+
+注意：`mergeDeepWith`可以在`withMutations`中使用。
+
+```
+mergeDeepWith(
+merger: (oldVal: T, newVal: T, key: number) => T,
+...collections: Array<Collection.Indexed<T> | Array<T>>
+): this
+```
+
+见
+
+`Map#mergeDeepWith`
+
+##### setSize\(\)
+
+返回一个新的List，长度为指定`size`。如果原长度大于`size`，那么新的list将不包含超`size`的值。如果原长度小于`size`，那么超过部分的值为undefind。
+
+```
+setSize(size: number): List<T>
+```
+
+在新构建一个LIst时，当已知最终长度，`setSize`可能会和`withMutations`共同使用以提高性能。
+
+
+
