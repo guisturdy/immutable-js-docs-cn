@@ -429,7 +429,7 @@ mergeIn(keyPath: Iterable<any>, ...collections: Array<any>): this
 
 `Map#mergIn`
 
-##### mergeDeepIn()
+##### mergeDeepIn\(\)
 
 注意：`mergeDeepIn`可以在`withMutations`中使用。
 ```
