@@ -400,3 +400,32 @@ list.deleteIn([3, 0]);
 
 注意：`removeIn`_不可_在`withMutations`中使用。
 
+##### updateIn\(\)
+
+注意：`updateIn`可以在`withMutations`中使用。
+
+```
+updateIn(
+keyPath: Iterable<any>,
+notSetValue: any,
+updater: (value: any) => any
+): this
+updateIn(keyPath: Iterable<any>, updater: (value: any) => any): this
+```
+
+见
+
+`Map#updateIn`
+
+##### mergIn\(\)
+
+注意：`mergIn`_不可_在`withMutations`中使用。
+
+```
+mergeIn(keyPath: Iterable<any>, ...collections: Array<any>): this
+```
+
+见
+
+`Map#mergIn`
+
