@@ -356,5 +356,26 @@ setSize(size: number): List<T>
 
 在新构建一个LIst时，当已知最终长度，`setSize`可能会和`withMutations`共同使用以提高性能。
 
+###### 深度持久化
+
+##### setIn\(\)
+
+返回一个新的在`ksyPath`指定位置了值`value`的List。如果在`keyPath`位置没有值存在，这个位置将会被构建一个新的不可变Map。
+
+```
+setIn(keyPath: Iterable<any>, value: any): this
+```
+
+数值索引将被用于描述在List中的路径位置。
+
+```
+const { List } = require('immutable');
+const list = List([ 0, 1, 2, List([ 3, 4 ])])
+list.setIn([3, 0], 999);
+// List [ 0, 1, 2, List [ 999, 4 ] ]
+```
+
+注意：`setIn`可以在`withMutations`中使用。
+
 
 
