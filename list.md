@@ -377,5 +377,26 @@ list.setIn([3, 0], 999);
 
 注意：`setIn`可以在`withMutations`中使用。
 
+##### deleteIn\(\)
 
+返回一个删除了由`keyPath`指定位置值的新List。如果指定位置无值，那么不会发生改变。
+
+```
+deleteIn(keyPath: Iterable<any>): this
+```
+
+别名
+
+`removeIn()`
+
+例
+
+```
+const { List } = require('immutable');
+const list = List([ 0, 1, 2, List([ 3, 4 ])])
+list.deleteIn([3, 0]);
+// List [ 0, 1, 2, List [ 4 ] ]
+```
+
+注意：`removeIn`_不可_在`withMutations`中使用。
 
