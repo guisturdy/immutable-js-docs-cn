@@ -443,5 +443,17 @@ mergeDeepIn(keyPath: Iterable<any>, ...collections: Array<any>): this
 
 ###### 暂时改变
 
+##### withMutaitions\(\)
+
+注意：只有部分方法可以被可变的集合调用或者在`withMutations`中调用！查看文档中各个方法看他是否允许在`withMuataions`中调用。
+
+```
+withMutations(mutator: (mutable: this) => any): this
+```
+
+见
+
+`Map#withMutations`
+
 
 
