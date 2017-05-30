@@ -432,9 +432,16 @@ mergeIn(keyPath: Iterable<any>, ...collections: Array<any>): this
 ##### mergeDeepIn\(\)
 
 注意：`mergeDeepIn`可以在`withMutations`中使用。
+
 ```
 mergeDeepIn(keyPath: Iterable<any>, ...collections: Array<any>): this
 ```
+
 见
 
 `Map#mergeDeepIn`
+
+###### 暂时改变
+
+
+
