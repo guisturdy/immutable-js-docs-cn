@@ -516,5 +516,43 @@ List([ 1, 2 ]).map(x => 10 * x)
 // List [ 10, 20 ]
 ```
 
-注意：map\(\)总是返回一个新的实例，即使它产出的每一个值都与原始值相同。
+注意：`map()`总是返回一个新的实例，即使它产出的每一个值都与原始值相同。
+
+##### flatMap\(\)
+
+扁平化这个List为一个新List。
+
+```
+flatMap<M>(
+mapper: (value: T, key: number, iter: this) => Iterable<M>,
+context?: any
+): List<M>
+```
+
+覆盖
+
+`Collection#flatMap`
+
+与`list.map(...).flatten(true)`相似。
+
+##### filter\(\)
+
+返回一个只有由传入方法`predicate`返回为true的值组成的新LIst。
+
+```
+filter<F>(
+predicate: (value: T, index: number, iter: this) => boolean,
+context?: any
+): List<F>
+filter(
+predicate: (value: T, index: number, iter: this) => any,
+context?: any
+): this
+```
+
+覆盖
+
+`Collection#filter`
+
+注意：`filter()`总是返回一个新的实例，即使它的结果没有过滤掉任何一个值。
 
