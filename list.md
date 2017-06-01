@@ -483,5 +483,38 @@ asImmutable(): this
 
 `Map#asImmutable`
 
+###### 序列算法
 
+##### cancat\(\)
+
+将其他的值或者集合与这个List串联起来返回为一个新List。
+
+```
+concat<C>(...valuesOrCollections: Array<Iterable<C> | C>): List<T | C>
+```
+
+覆盖
+
+`Collection#concat`
+
+##### map\(\)
+
+返回一个由传入的`mapper`函数处理过值的新List。
+
+```
+map<M>(mapper: (value: T, key: number, iter: this) => M, context?: any): List<M>
+```
+
+覆盖
+
+`Collection#map`
+
+例
+
+```
+List([ 1, 2 ]).map(x => 10 * x)
+// List [ 10, 20 ]
+```
+
+注意：map\(\)总是返回一个新的实例，即使它产出的每一个值都与原始值相同。
 
