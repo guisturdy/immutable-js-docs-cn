@@ -576,7 +576,40 @@ const b = List([ 4, 5, 6 ]);
 const c = a.zip(b); // List [ [ 1, 4 ], [ 2, 5 ], [ 3, 6 ] ]
 ```
 
+##### [Symbol.iterator]
 
+```
+[Symbol.iterator](): IterableIterator<T>
+```
+
+继承自
+
+`Collection.Indexed#[Symbol.iterator]`
+
+##### filterNot\(\)
+
+返回一个由所提供的`predicate`方法返回false过滤的新的相同类型的集合。
+
+```
+filterNot(
+predicate: (value: T, key: number, iter: this) => boolean,
+context?: any
+): this
+```
+
+继承自
+
+`Collection#filterNot`
+
+例
+
+```
+const { Map } = require('immutable')
+Map({ a: 1, b: 2, c: 3, d: 4}).filterNot(x => x % 2 === 0)
+// Map { "a": 1, "c": 3 }
+```
+
+注意：`filterNot`总是返回一个新的实例，即使它没有过滤掉任何一个值。
 
 
 
