@@ -556,3 +556,27 @@ context?: any
 
 注意：`filter()`总是返回一个新的实例，即使它的结果没有过滤掉任何一个值。
 
+##### zip\(\)
+
+将List与所提供集合拉链咬合\(zipped\)。
+
+```
+zip(...collections: Array<Collection<any, any>>): List<any>
+```
+
+覆盖
+
+`Collection.Index#zip`
+
+与`zipWIth`类似，但这个使用默认的zipper建立[数组](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array)。
+
+```
+const a = List([ 1, 2, 3 ]);
+const b = List([ 4, 5, 6 ]);
+const c = a.zip(b); // List [ [ 1, 4 ], [ 2, 5 ], [ 3, 6 ] ]
+```
+
+
+
+
+
