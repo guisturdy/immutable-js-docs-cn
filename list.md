@@ -658,3 +658,25 @@ Map({ "c": 3, "a": 1, "b": 2 }).sort((a, b) => {
 
 注意：`sort()`总是返回一个新的实例，即使它没有改变排序。
 
+##### sortBy()
+
+与`sort`类似，但能接受一个`comparatorValueMapper`方法，它允许通过更复杂的方式进行排序：
+
+```
+sortBy<C>(
+    comparatorValueMapper: (value: T, key: number, iter: this) => C,
+    comparator?: (valueA: C, valueB: C) => number
+): this
+```
+
+继承自
+
+`Collection#sortBy`
+
+例
+
+```
+hitters.sortBy(hitter => hitter.avgHits)
+```
+
+注意：`sortBy()`总是返回一个新的实例，即使它没有改变排序。
