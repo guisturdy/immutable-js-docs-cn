@@ -611,5 +611,50 @@ Map({ a: 1, b: 2, c: 3, d: 4}).filterNot(x => x % 2 === 0)
 
 注意：`filterNot`总是返回一个新的实例，即使它没有过滤掉任何一个值。
 
+##### reverse()
 
+返回为一个逆序的新的List。
+
+```
+reverse(): this
+```
+
+继承自
+
+`Collection#reverse`
+
+##### sort()
+
+返回一个使用传入的`comparator`重新排序的新List。
+
+```
+sort(comparator?: (valueA: T, valueB: T) => number): this
+```
+
+继承自
+
+`Collection#sort`
+
+如果没有提供`comparator`方法，那么默认的比较将使用`<`和`>`。
+
+`comparator(valueA, valueB):`
+
+* 返回值为`0`这个元素将不会被交换。
+* 返回值为`-1`(或者任意负数)`valueA`将会移到`valueB`之前。 
+* 返回值为`1`(或者任意正数)`valueA`将会移到`valueB`之后。 
+* 为空，这将会返回相同的值和顺序。
+
+当被排序的集合没有定义顺序，那么将会返回同等的有序集合。比如`map.sort()`将返回OrderedMap。
+
+```
+const { Map } = require('immutable')
+Map({ "c": 3, "a": 1, "b": 2 }).sort((a, b) => {
+  if (a < b) { return -1; }
+  if (a > b) { return 1; }
+  if (a === b) { return 0; }
+});
+// OrderedMap { "a": 1, "b": 2, "c": 3 }
+```
+
+注意：`sort()`总是返回一个新的实例，即使它没有改变排序。
 
