@@ -680,3 +680,35 @@ hitters.sortBy(hitter => hitter.avgHits)
 ```
 
 注意：`sortBy()`总是返回一个新的实例，即使它没有改变排序。
+
+##### groupBy()
+
+返回一个`Collection.Keyeds`的`Collection.keyed`，由传入的`grouper`方法分组。
+
+```
+groupBy<G>(
+    grouper: (value: T, key: number, iter: this) => G,
+    context?: any
+): Seq.Keyed<G, Collection<number, T>>
+```
+
+继承自
+
+`Collection#groupBy`
+
+```
+const { List, Map } = require('immutable')
+const listOfMaps = List([
+  Map({ v: 0 }),
+  Map({ v: 1 }),
+  Map({ v: 1 }),
+  Map({ v: 0 }),
+  Map({ v: 2 })
+])
+const groupsOfMaps = listOfMaps.groupBy(x => x.get('v'))
+// Map {
+//   0: List [ Map{ "v": 0 }, Map { "v": 0 } ],
+//   1: List [ Map{ "v": 1 }, Map { "v": 1 } ],
+//   2: List [ Map{ "v": 2 } ],
+// }
+```
