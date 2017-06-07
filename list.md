@@ -712,3 +712,17 @@ const groupsOfMaps = listOfMaps.groupBy(x => x.get('v'))
 //   2: List [ Map{ "v": 2 } ],
 // }
 ```
+
+###### 转换为JavaScript类型
+
+##### toJS()
+
+深度地将这个有序的集合转换转换为原生JS数组。
+
+```
+toJS(): Array<any>
+```
+
+继承自
+
+`CLooection.Index#toJS`
