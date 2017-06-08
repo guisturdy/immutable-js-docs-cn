@@ -717,7 +717,7 @@ const groupsOfMaps = listOfMaps.groupBy(x => x.get('v'))
 
 ##### toJS()
 
-深度地将这个有序的集合转换转换为原生JS数组。
+深层地将这个有序的集合转换转换为原生JS数组。
 
 ```
 toJS(): Array<any>
@@ -725,4 +725,40 @@ toJS(): Array<any>
 
 继承自
 
-`CLooection.Index#toJS`
+`Collection.Index#toJS`
+
+##### toJSON()
+
+浅转换这个有序的集合为原生JS数组。
+
+```
+toJSON(): Array<any>
+```
+
+继承自
+
+`Collection.Index#toJSON`
+
+##### toArray()
+
+浅转换这个有序的集合为原生JS数组并且丢弃key。
+
+```
+toArray(): Array<any>
+```
+
+继承自
+
+`Collection#toArray`
+
+##### toObject()
+
+浅转换这个有序的集合为原生JS对象。
+
+```
+toObject(): {[key: string]: V}
+```
+
+继承自
+
+`Collection#toObject`
