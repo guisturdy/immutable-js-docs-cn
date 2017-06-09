@@ -804,3 +804,27 @@ includes(value: T): boolean
 
 `Collection#includes`
 
+##### first()
+
+取得集合第一个值。
+
+```
+first(): T | undefined
+```
+
+继承自
+
+`Collection#first`
+
+##### last()
+
+取得集合第一个值。
+
+```
+last(): T | undefined
+```
+
+继承自
+
+`Collection#last`
+
