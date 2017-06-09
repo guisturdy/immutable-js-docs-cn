@@ -782,7 +782,7 @@ get(index: number): T | undefined
 
 ##### has()
 
-使用`Immutable.is`判断值是否在`Collection`中。
+使用`Immutable.is`判断key值是否在`Collection`中。
 
 ```
 has(key: number): boolean
@@ -791,3 +791,16 @@ has(key: number): boolean
 继承自
 
 `Collection#has`
+
+##### includes()
+
+使用`Immutable.is`判断value值是否在`Collection`中。
+
+```
+includes(value: T): boolean
+```
+
+继承自
+
+`Collection#includes`
+
