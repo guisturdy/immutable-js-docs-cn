@@ -762,3 +762,21 @@ toObject(): {[key: string]: V}
 继承自
 
 `Collection#toObject`
+
+###### 读值
+
+##### get()
+
+返回提供的索引位置关联的值，或者当提供的索引越界时返回所提供的notSetValue。
+
+```
+get<NSV>(index: number, notSetValue: NSV): T | NSV
+get(index: number): T | undefined
+```
+
+继承自
+
+`Collection.Indexed#get`
+
+`index`可以为负值，表示从集合尾部开始索引。`s.get(-1)`取得集合最后一个元素。
+
