@@ -780,3 +780,14 @@ get(index: number): T | undefined
 
 `index`可以为负值，表示从集合尾部开始索引。`s.get(-1)`取得集合最后一个元素。
 
+##### has()
+
+使用`Immutable.is`判断值是否在`Collection`中。
+
+```
+has(key: number): boolean
+```
+
+继承自
+
+`Collection#has`
