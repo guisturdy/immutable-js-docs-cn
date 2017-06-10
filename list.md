@@ -828,3 +828,28 @@ last(): T | undefined
 
 `Collection#last`
 
+###### 转换为Seq
+
+##### toSeq()
+
+返回Seq.Indexed。
+
+```
+toSeq(): Seq.Indexed<T>
+```
+
+继承自
+
+`Collection.Indexed#toSeq`
+
+##### fromEntrySeq()
+
+如果这个集合是由[key, value]这种原组构成的，那么这将返回这些原组的Seq.Keyed。
+
+```
+fromEntrySeq(): Seq.Keyed<any, any>
+```
+
+继承自
+
+`Collection.Index#fromEntrySeq`
