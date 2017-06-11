@@ -853,3 +853,55 @@ fromEntrySeq(): Seq.Keyed<any, any>
 继承自
 
 `Collection.Index#fromEntrySeq`
+
+##### toKeyedSeq()
+
+从这个集合返回一个Seq.Keyed，其中索引将视作key。
+
+```
+toKeyedSeq(): Seq.Keyed<number, T>
+```
+
+继承自
+
+`Collection#toKeyedSeq`
+
+如果你想对Collection.Indexed操作返回一组[index, value]对，这将十分有用。
+
+返回的Seq将与Colleciont有相同的索引顺序。
+
+```
+const { Seq } = require('immutable')
+const indexedSeq = Seq([ 'A', 'B', 'C' ])
+// Seq [ "A", "B", "C" ]
+indexedSeq.filter(v => v === 'B')
+// Seq [ "B" ]
+const keyedSeq = indexedSeq.toKeyedSeq()
+// Seq { 0: "A", 1: "B", 2: "C" }
+keyedSeq.filter(v => v === 'B')
+// Seq { 1: "B" }
+```
+
+##### toIndexedSeq()
+
+将这个集合的值丢弃键(key)返回为Seq.Indexed。
+
+```
+toIndexedSeq(): Seq.Indexed<T>
+```
+
+继承自
+
+`Collection#toIndexedSeq`
+
+##### toSetSeq()
+
+将这个集合的值丢弃键(key)返回为Seq.Set。
+
+```
+toSetSeq(): Seq.Set<T>
+```
+
+继承自
+
+`Collection#toSetSeq`
