@@ -905,3 +905,86 @@ toSetSeq(): Seq.Set<T>
 继承自
 
 `Collection#toSetSeq`
+
+###### 组合
+
+##### interpose()
+
+返回一个在原集合每两个元素之间插入提供的`separator`的同类型集合。
+
+```
+interpose(separator: T): this
+```
+
+继承自
+
+`COllection.Indexed#interpose`
+
+##### interleave()
+
+返回一个原集合与所提供`collections`交叉的痛类型集合。
+
+```
+interleave(...collections: Array<Collection<any, T>>): this
+```
+
+继承自
+
+`Collection.Indexed#interleave`
+
+返回的集合依次包含第一个集合元素与第二个集合元素。
+
+```
+const { List } = require('immutable')
+List([ 1, 2, 3 ]).interleave(List([ 'A', 'B', 'C' ]))
+// List [ 1, "A", 2, "B", 3, "C"" ]
+```
+
+由最短的集合结束交叉。
+
+```
+List([ 1, 2, 3 ]).interleave(
+  List([ 'A', 'B' ]),
+  List([ 'X', 'Y', 'Z' ])
+)
+// List [ 1, "A", "X", 2, "B", "Y"" ]
+```
+
+##### splice()
+
+返回一个由指定值替换了原集合某个范围的值的新的有序集合。如果没提供替换的值，那么会跳过要删除的范围。
+
+```
+splice(index: number, removeNum: number, ...values: Array<T>): this
+```
+
+继承自
+
+`Collection.Indexed#splice`
+
+`index`可以为负值，表示从集合结尾开始索引。`s.splice(-2)`表示倒数第二个元素开始拼接。
+
+```
+const { List } = require('immutable')
+List([ 'a', 'b', 'c', 'd' ]).splice(1, 2, 'q', 'r', 's')
+// List [ "a", "q", "r", "s", "d" ]
+```
+
+##### flatten()
+
+压平嵌套的集合。
+
+```
+flatten(depth?: number): Collection<any, any>
+flatten(shallow?: boolean): Collection<any, any>
+```
+
+继承自
+
+`Collection#flatten`
+
+默认会深度地经常压平集合操作，返回一个同类型的集合。可以指定`depth`为压平深度或者是否深度压平（为true表示仅进行一层的浅层压平）。如果深度为0（或者shllow:false）将会深层压平。
+
+压平仅会操作其他集合，数组和对象不会进行此操作。
+
+注意：`flatten(true)`操作是在集合上进行，同时返回一个集合。
