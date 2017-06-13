@@ -988,3 +988,60 @@ flatten(shallow?: boolean): Collection<any, any>
 压平仅会操作其他集合，数组和对象不会进行此操作。
 
 注意：`flatten(true)`操作是在集合上进行，同时返回一个集合。
+
+###### 查找
+
+##### indexOf()
+
+返回集合中第一个与所提供的搜索值匹配的索引，无匹配值则返回-1.
+
+```
+indexOf(searchValue: T): number
+```
+
+继承自
+
+`Collection.Indexed#indexOf`
+
+##### lastIndexOf()
+
+返回集合中最后一个与所提供的搜索值匹配的索引，无匹配值则返回-1.
+
+```
+lastIndexOf(searchValue: T): number
+```
+
+继承自
+
+`Collection.Indexed#lastIndexOf`
+
+##### findIndex()
+
+返回集合中第一个符合与所提供的断言的索引，均不符合则返回-1.
+
+```
+findIndex(
+    predicate: (value: T, index: number, iter: this) => boolean,
+    context?: any
+): number
+```
+
+继承自
+
+`Collection.Indexed#findIndex`
+
+##### findLastIndex()
+
+返回集合中最后一个符合与所提供的断言的索引，均不符合则返回-1.
+
+```
+findLastIndex(
+    predicate: (value: T, index: number, iter: this) => boolean,
+    context?: any
+): number
+```
+
+继承自
+
+`Collection.Indexed#findLastIndex`
+
