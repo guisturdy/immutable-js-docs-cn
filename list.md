@@ -993,7 +993,7 @@ flatten(shallow?: boolean): Collection<any, any>
 
 ##### indexOf()
 
-返回集合中第一个与所提供的搜索值匹配的索引，无匹配值则返回-1.
+返回集合中第一个与所提供的搜索值匹配的索引，无匹配值则返回-1。
 
 ```
 indexOf(searchValue: T): number
@@ -1005,7 +1005,7 @@ indexOf(searchValue: T): number
 
 ##### lastIndexOf()
 
-返回集合中最后一个与所提供的搜索值匹配的索引，无匹配值则返回-1.
+返回集合中最后一个与所提供的搜索值匹配的索引，无匹配值则返回-1。
 
 ```
 lastIndexOf(searchValue: T): number
@@ -1017,7 +1017,7 @@ lastIndexOf(searchValue: T): number
 
 ##### findIndex()
 
-返回集合中第一个符合与所提供的断言的索引，均不符合则返回-1.
+返回集合中第一个符合与所提供的断言的索引，均不符合则返回-1。
 
 ```
 findIndex(
@@ -1032,7 +1032,7 @@ findIndex(
 
 ##### findLastIndex()
 
-返回集合中最后一个符合与所提供的断言的索引，均不符合则返回-1.
+返回集合中最后一个符合与所提供的断言的索引，均不符合则返回-1。
 
 ```
 findLastIndex(
@@ -1045,3 +1045,163 @@ findLastIndex(
 
 `Collection.Indexed#findLastIndex`
 
+##### find()
+
+返回集合中第一个符合与所提供的断言的值。
+
+```
+find(
+    predicate: (value: T, key: number, iter: this) => boolean,
+    context?: any,
+    notSetValue?: T
+): T | undefined
+```
+
+继承自
+
+`Collection#find`
+
+##### findLast()
+
+返回集合中最后一个符合与所提供的断言的值。
+
+```
+findLast(
+    predicate: (value: T, key: number, iter: this) => boolean,
+    context?: any,
+    notSetValue?: T
+): T | undefined
+```
+
+继承自
+
+`Collection#findLast`
+
+注意：`predicate`将会逆序地在每个值上调用。
+
+##### findEntry()
+
+返回第一个符合所提供断言的值的[key， value]。
+
+```
+findEntry(
+    predicate: (value: T, key: number, iter: this) => boolean,
+    context?: any,
+    notSetValue?: T
+): [number, T] | undefined
+```
+
+继承自
+
+`Collection#findEntry`
+
+##### findLastEntry()
+
+返回最后一个符合所提供断言的值的[key， value]。
+
+```
+findLastEntry(
+    predicate: (value: T, key: number, iter: this) => boolean,
+    context?: any,
+    notSetValue?: T
+): [number, T] | undefined
+```
+
+继承自
+
+`Collection#findLastEntry`
+
+注意：`predicate`将会逆序地在每个值上调用。
+
+##### findKey()
+
+返回第一个`predicate`返回为true的键。
+
+```
+findKey(
+    predicate: (value: T, key: number, iter: this) => boolean,
+    context?: any
+): number | undefined
+```
+
+继承自
+
+`Collection#findKey`
+
+##### findLastKey()
+
+返回最后一个`predicate`返回为true的键。
+
+```
+findLastKey(
+    predicate: (value: T, key: number, iter: this) => boolean,
+    context?: any
+): number | undefined
+```
+
+继承自
+
+`Collection#findLastKey`
+
+注意：`predicate`将会逆序地在每个值上调用。
+
+##### keyOf()
+
+返回与提供的搜索值关联的键，或者undefined。
+
+```
+keyOf(searchValue: T): number | undefined
+```
+
+继承自
+
+`Collection#keyOf`
+
+##### lastKeyOf()
+
+返回最后一个与提供的搜索值关联的键或者undefined。
+
+```
+lastKeyOf(searchValue: T): number | undefined
+```
+
+继承自
+
+`Collection#lastKeyOf`
+
+##### max()
+
+返回集合中最大的值。如果有多个值比较为相等，那么将返回第一个。
+
+```
+max(comparator?: (valueA: T, valueB: T) => number): T | undefined
+```
+
+继承自
+
+`Collection#max`
+
+`comparator`的使用方法与`Collection#sort`是一样的，如果未提供那么默认的比较为`>`。
+
+当两个值比较为相等时，第一个遇见的值将会被返回。另一方面，如果`comparator`是可交换的，那么`max`将会独立于输入的顺序。默认的比较器`>`*只有*在类型不一致时才可交换。
+
+##### maxBy()
+
+和`max`类似，但还能接受一个`comparatorValueMapper`来实现更复杂的比较。
+
+```
+maxBy<C>(
+    comparatorValueMapper: (value: T, key: number, iter: this) => C,
+    comparator?: (valueA: C, valueB: C) => number
+): T | undefined
+```
+
+继承自
+
+`Collection#maxBy`
+
+例
+
+```
+hitters.maxBy(hitter => hitter.avgHits)
+```
