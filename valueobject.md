@@ -34,5 +34,5 @@ const set = Set([ a ]);
 assert(set.has(b) === true);
 ```
 
-当两个值的`hashCode`相同，并[不能完全保证他们是相等的](https://zh.wikipedia.org/wiki/碰撞_%28计算机科学%29)，但当他们的`hashCode`不同，他们一定是不等的。
+当两个值的`hashCode`相等时，并[不能完全保证他们是相等的](https://zh.wikipedia.org/wiki/碰撞_%28计算机科学%29)，但当他们的`hashCode`不同时，他们一定是不等的。
 

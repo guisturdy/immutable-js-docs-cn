@@ -1185,6 +1185,8 @@ max(comparator?: (valueA: T, valueB: T) => number): T | undefined
 
 当两个值比较为相等时，第一个遇见的值将会被返回。另一方面，如果`comparator`是可交换的，那么`max`将会独立于输入的顺序。默认的比较器`>`*只有*在类型不一致时才可交换。
 
+如果`comparator`返回0或者值为NaN、undefined或者null，这个值将会被返回。
+
 ##### maxBy()
 
 和`max`类似，但还能接受一个`comparatorValueMapper`来实现更复杂的比较。
@@ -1205,3 +1207,81 @@ maxBy<C>(
 ```
 hitters.maxBy(hitter => hitter.avgHits)
 ```
+
+##### min()
+
+返回集合中最小的值，如果有多个值比较为相等，将会返回第一个。
+
+```
+min(comparator?: (valueA: T, valueB: T) => number): T | undefined
+```
+
+继承自
+
+`Collection#min`
+
+当两个值比较为相等时，第一个遇见的值将会被返回。另一方面，如果`comparator`是可交换的，那么`min`将会独立于输入的顺序。默认的比较器`<`*只有*在类型不一致时才可交换。
+
+如果`comparator`返回0或者值为NaN、undefined或者null，这个值将会被返回。
+
+##### minBy()
+
+和`min`类似，但还能接受一个`comparatorValueMapper`来实现更复杂的比较。
+
+```
+minBy<C>(
+    comparatorValueMapper: (value: T, key: number, iter: this) => C,
+    comparator?: (valueA: C, valueB: C) => number
+): T | undefined
+```
+
+继承自
+
+`Collection#minBy`
+
+例
+
+```
+hitters.minBy(hitter => hitter.avgHits)
+```
+
+###### 等值比较
+
+##### equals()
+
+如果当前集合和另一个集合比较为相等，那么返回true，是否相等由`Immutable.is()`定义。
+
+```
+equals(other: any): boolean
+```
+
+继承自
+
+`Collection#equals`
+
+注意：此方法与`Immutable.is(this, other)`等效，提供此方法是为了方便能够链式地使用。
+
+##### hashCode()
+
+计算并返回这个集合的哈希值。
+
+```
+hashCode(): number
+```
+
+继承自
+
+`Collection#hashCode`
+
+集合的`hashCode`用于确定两个集合的相等性，在添加到`Set`或者被作为`Map`的键值时用于检测两个实例是否相等而会被使用到。
+
+```
+const a = List([ 1, 2, 3 ]);
+const b = List([ 1, 2, 3 ]);
+assert(a !== b); // different instances
+const set = Set([ a ]);
+assert(set.has(b) === true);
+```
+
+当两个值的`hashCode`相等时，并[不能完全保证他们是相等的](https://zh.wikipedia.org/wiki/碰撞_%28计算机科学%29)，但当他们的`hashCode`不同时，他们一定是不等的。
+
