@@ -1285,3 +1285,29 @@ assert(set.has(b) === true);
 
 当两个值的`hashCode`相等时，并[不能完全保证他们是相等的](https://zh.wikipedia.org/wiki/碰撞_%28计算机科学%29)，但当他们的`hashCode`不同时，他们一定是不等的。
 
+###### 读取深层数据
+
+##### getIn()
+
+返回根据提供的路径或者索引搜索到的嵌套的值。
+
+```
+getIn(searchKeyPath: Iterable<any>, notSetValue?: any): any
+```
+
+继承自
+
+`Collection#getIn`
+
+##### hasIn()
+
+根据提供的路径或者索引检测该处是否设置了值。
+
+```
+hasIn(searchKeyPath: Iterable<any>): boolean
+```
+
+继承自
+
+`Collection#hasIn`
+
