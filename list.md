@@ -1311,3 +1311,91 @@ hasIn(searchKeyPath: Iterable<any>): boolean
 
 `Collection#hasIn`
 
+###### 转换为集合
+
+##### toMap()
+
+将此集合转换为Map，如果键不可哈希，则抛弃。
+
+```
+toMap(): Map<number, T>
+```
+
+继承自
+
+`Collection#toMap`
+
+注意：这和`Map(this.toKeyedSeq())`等效，为了能够方便的进行链式调用而提供。
+
+##### toOrderedMap()
+
+将此集合转换为Map，保留索引的顺序。
+
+```
+toOrderedMap(): OrderedMap<number, T>
+```
+
+继承自
+
+`Collection#toOrderedMap`
+
+注意：这和`OrderedMap(this.toKeyedSeq())`等效，为了能够方便的进行链式调用而提供。
+
+##### toSet()
+
+将此集合转换为Set，如果值不可哈希，则抛弃。
+
+```
+toSet(): Set<T>
+```
+
+继承自
+
+`Collection#toSet`
+
+注意：这和`Set(this)`等效，为了能够方便的进行链式调用而提供。
+
+##### toOrderSet()
+
+将此集合转换为Set，保留索引的顺序。
+
+```
+toOrderedSet(): OrderedSet<T>
+```
+
+继承自
+
+`Collection#toOrderedSet`
+
+注意：这和`OrderedSet(this.valueSeq())`等效，为了能够方便的进行链式调用而提供。
+
+##### toList()
+
+将此集合转换为List，丢弃键值。
+
+```
+toList(): List<T>
+```
+
+继承自
+
+`Collection#toList`
+
+此方法和`List(collection)`类似，为了能够方便的进行链式调用而提供。然而，当在`Map`或者其他有键的集合上调用时，`collection.toList()`会丢弃键值，同时创建一个只有值的list，而`List(collection)`使用传入的元组创建list。
+
+```
+const { Map, List } = require('immutable')
+var myMap = Map({ a: 'Apple', b: 'Banana' })
+List(myMap) // List [ [ "a", "Apple" ], [ "b", "Banana" ] ]
+myMap.toList() // List [ "Apple", "Banana" ]
+```
+
+##### toStack()
+
+将此集合装换为Stack，丢弃键值，抛弃不可哈希的值。
+
+```
+toStack(): Stack<T>
+```
+
+注意：这和`Stack(this)`等效，为了能够方便的进行链式调用而提供。
