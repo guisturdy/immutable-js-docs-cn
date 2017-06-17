@@ -1392,7 +1392,7 @@ myMap.toList() // List [ "Apple", "Banana" ]
 
 ##### toStack()
 
-将此集合装换为Stack，丢弃键值，抛弃不可哈希的值。
+将此集合转换为Stack，丢弃键值，抛弃不可哈希的值。
 
 ```
 toStack(): Stack<T>
