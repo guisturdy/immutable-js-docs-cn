@@ -1399,3 +1399,47 @@ toStack(): Stack<T>
 ```
 
 注意：这和`Stack(this)`等效，为了能够方便的进行链式调用而提供。
+
+###### 迭代器
+
+##### keys()
+
+一个关于`Collection`键的迭代器。
+
+```
+keys(): IterableIterator<number>
+```
+
+继承自
+
+`Collection#keys`
+
+注意：此方法将返回ES6规范的迭代器，并不支持Immutable.js的sequence算法，你可以尝试使用`keySeq`来满足需求。
+
+##### values()
+
+一个关于`Collection`值的迭代器。
+
+```
+values(): IterableIterator<T>
+```
+
+继承自
+
+`Collection#values`
+
+注意：此方法将返回ES6规范的迭代器，并不支持Immutable.js的sequence算法，你可以尝试使用`valueSeq`来满足需求。
+
+##### entries()
+
+一个关于`Collection`条目的迭代器，是`[ key, value ]`这样的元组数据。
+
+```
+entries(): IterableIterator<[number, T]>
+```
+
+继承自
+
+`Collection#entries`
+
+注意：此方法将返回ES6规范的迭代器，并不支持Immutable.js的sequence算法，你可以尝试使用`entrySeq`来满足需求。
