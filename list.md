@@ -1443,3 +1443,43 @@ entries(): IterableIterator<[number, T]>
 `Collection#entries`
 
 注意：此方法将返回ES6规范的迭代器，并不支持Immutable.js的sequence算法，你可以尝试使用`entrySeq`来满足需求。
+
+
+###### 集合（Seq）
+
+##### keySeq()
+
+返回一个新的Seq.Indexed，其包含这个集合的键值。
+
+```
+keySeq(): Seq.Indexed<number>
+```
+
+继承自
+
+`Collection#keySeq`
+
+##### valueSeq()
+
+返回一个新的Seq.Indexed，其包含这个集合的所有值。
+
+```
+valueSeq(): Seq.Indexed<T>
+```
+
+继承自
+
+`Collection#valueSeq`
+
+##### entrySeq()
+
+返回一个新的Seq.Indexed，其为[key, value]这样的元组。
+
+```
+entrySeq(): Seq.Indexed<[number, T]>
+```
+
+继承自
+
+`Collection#entrySeq`
+
