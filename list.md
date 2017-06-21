@@ -1483,3 +1483,210 @@ entrySeq(): Seq.Indexed<[number, T]>
 
 `Collection#entrySeq`
 
+###### 副作用
+
+##### forEach()
+
+`sideEffect`将会对集合上每个元素执行。
+
+```
+forEach(
+    sideEffect: (value: T, key: number, iter: this) => any,
+    context?: any
+): number
+```
+
+继承自 
+
+`Collection#forEach`
+
+与`Array#forEach`不同，任意一个`sideEffect`返回`false`都会停止循环。函数将返回所有参与循环的元素（包括最后一个返回false的那个）。
+
+###### 创建子集
+
+##### slice()
+
+返回一个新的相同类型的相当于原集合指定范围的元素集合，包含开始索引但不包含结束索引位置的值。
+
+```
+slice(begin?: number, end?: number): this
+```
+
+继承自
+
+`Collection#slice`
+
+如果起始值为负，那么表示从集合结束开始查找。例如`slice(-2)`返回集合最后两个元素。如果没有提供，那么新的集合将会从最开始那个元素开始。
+
+如果终止值为负，表示从集合结束开始查找。例如`silice(0, -1)`返回除集合最后一个元素外所有元素。如果没提供，新的集合将会包含到原集合最后一个元素。
+
+如果请求的子集与原集合相等，那么将会返回原集合。
+
+##### rest()
+
+返回一个不包含原集合第一个元素的新的同类型的集合。
+
+```
+rest(): this
+```
+
+继承自 
+
+`Collection#rest`
+
+##### butLast()
+
+返回一个不包含原集合最后一个元素的新的同类型的集合。
+
+```
+butLast(): this
+```
+
+继承自 
+
+`Collection#butLast`
+
+##### skip()
+
+返回一个不包含原集合从头开始`amount`个数元素的新的同类型集合。
+
+```
+skip(amount: number): this
+```
+
+继承自
+
+`Collection#skip`
+
+##### skipLast()
+
+返回一个不包含原集合从结尾开始`amount`个数元素的新的同类型集合。
+
+```
+skipLast(amount: number): this
+```
+
+继承自
+
+`Collection#skipLast`
+
+##### skipWhile()
+
+返回一个原集合从`predicate`返回false那个元素开始的新的同类型集合。
+
+```
+skipWhile(
+    predicate: (value: T, key: number, iter: this) => boolean,
+    context?: any
+): this
+```
+
+继承自
+
+`Collection#skipWhile`
+
+例
+
+```
+const { List } = require('immutable')
+List([ 'dog', 'frog', 'cat', 'hat', 'god' ])
+  .skipWhile(x => x.match(/g/))
+// List [ "cat", "hat", "god" ]
+```
+
+##### skipUntil()
+
+返回一个原集合从`predicate`返回true那个元素开始的新的同类型集合。
+
+```
+skipUntil(
+predicate: (value: T, key: number, iter: this) => boolean,
+context?: any
+): this
+```
+
+继承自
+
+`Collection#skipUntil`
+
+例
+
+```
+const { List } = require('immutable')
+List([ 'dog', 'frog', 'cat', 'hat', 'god' ])
+  .skipUntil(x => x.match(/hat/))
+// List [ "hat", "god"" ]
+```
+
+###### take()
+
+返回一个包含原集合从头开始的`amount`个元素的新的同类型集合。
+
+```
+take(amount: number): this
+```
+
+继承自
+
+`Collection#take`
+
+##### takeLast()
+
+返回一个包含从原集合结尾开始的`amount`个元素的新的同类型集合。
+
+```
+takeLast(amount: number): this
+```
+
+继承自
+
+`Collection#take`
+
+##### takeWhile()
+
+返回一个包含原集合从头开始的`prediacte`返回true的那些元素的新的同类型集合。
+
+```
+takeWhile(
+    predicate: (value: T, key: number, iter: this) => boolean,
+    context?: any
+): this
+```
+
+继承自
+
+`Collection#takeWhile`
+
+例
+
+```
+const { List } = require('immutable')
+List([ 'dog', 'frog', 'cat', 'hat', 'god' ])
+  .takeWhile(x => x.match(/o/))
+// List [ "dog", "frog" ]
+```
+
+##### takeUntil()
+
+返回一个包含原集合从头开始的`prediacte`返回false的那些元素的新的同类型集合。
+
+```
+takeUntil(
+    predicate: (value: T, key: number, iter: this) => boolean,
+    context?: any
+): this
+```
+
+继承自
+
+`Collection#takeUntil`
+
+例
+
+```
+const { List } = require('immutable')
+List([ 'dog', 'frog', 'cat', 'hat', 'god' ])
+  .takeUntil(x => x.match(/at/))
+// List [ "dog", "frog" ]
+```
+
