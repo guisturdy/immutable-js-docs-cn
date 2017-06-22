@@ -1690,3 +1690,163 @@ List([ 'dog', 'frog', 'cat', 'hat', 'god' ])
 // List [ "dog", "frog" ]
 ```
 
+###### 减少值
+
+##### reduce()
+
+将传入的方法`reducer`在集合每个元素上调用并传递缩减值，以此来缩减集合的值。
+
+```
+reduce<R>(
+    reducer: (reduction: R, value: T, key: number, iter: this) => R,
+    initialReduction: R,
+    context?: any
+): R
+reduce<R>(reducer: (reduction: T | R, value: T, key: number, iter: this) => R): R
+```
+
+继承自
+
+`Collection#reduce`
+
+见
+
+`Array#reduce`
+
+如果`initialReduction`未提供，那么将会使用集合第一个元素。
+
+##### reduceRight()
+
+逆向地缩减集合的值（从结尾开始）。
+
+```
+reduceRight<R>(
+    reducer: (reduction: R, value: T, key: number, iter: this) => R,
+    initialReduction: R,
+    context?: any
+): R
+reduceRight<R>(
+    reducer: (reduction: T | R, value: T, key: number, iter: this) => R
+): R
+```
+
+继承自
+
+`Collection#reduceRight`
+
+注意：与this.reverse().reduce()等效，为了与`Array#reduceRight`看齐而提供。
+
+##### every()
+
+当集合中所有元素`predicate`都判定为true时返回ture。
+
+```
+every(
+    predicate: (value: T, key: number, iter: this) => boolean,
+    context?: any
+): boolean
+```
+
+继承自
+
+`Collection#every`
+
+##### some()
+
+当集合中任意元素`predicate`判定为true时返回ture。
+
+```
+some(
+    predicate: (value: T, key: number, iter: this) => boolean,
+    context?: any
+): boolean
+```
+
+继承自
+
+`Collection#some`
+
+##### join()
+
+将值连接为字符串，并且在每两个值之间插入分割。默认分隔为`","`。
+
+```
+join(separator?: string): string
+```
+
+继承自
+
+`Collection#join`
+
+##### isEmpty()
+
+当集合不包含值时返回true。
+
+```
+isEmpty(): boolean
+```
+
+继承自
+
+`Collection#isEmpty`
+
+对于惰性`Seq`，isEmpty会对他经常迭代来确定是否为空。至少会迭代一次。
+
+##### count()
+
+返回集合的大小。
+
+```
+count(): number
+count(
+    predicate: (value: T, key: number, iter: this) => boolean,
+    context?: any
+): number
+```
+
+继承自
+
+`Collection#count`
+
+不管此集合是否惰性地确定大小（某些Seq不能），这个方法将总是返回正确的大小。如果必要，他将会评估一个惰性的Seq。
+
+如果`predicate`提供了，方法返回的数量将是集合中`predicate`返回true的元素个数。
+
+##### countBy()
+
+返回`Seq.Keyed`的数量，由`grouper`方法将值分组。
+
+```
+countBy<G>(
+    grouper: (value: T, key: number, iter: this) => G,
+    context?: any
+): Map<G, number>
+```
+
+注意：这不是一个惰性操作。
+
+###### 对比
+
+##### isSubset()
+
+如果`iter`包含集合中所有元素则返回true。
+
+```
+isSubset(iter: Iterable<T>): boolean
+```
+
+继承自
+
+`Collection#isSubset`
+
+##### isSuperset()
+
+如果集合包含`iter`中所有元素则返回true。
+
+```
+isSuperset(iter: Iterable<T>): boolean
+```
+
+继承自
+
+`Collection#isSuperset`
