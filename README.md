@@ -102,7 +102,7 @@ hash\(\)方法是Immutable确认两个值是否相等和决定这些值如何存
 
 #### [ValueObject](/valueobject.md)
 
-##### List
+##### [List](/list.md)
 
 List是有序的密集型集合，类似于JS的数组（Array）。
 
