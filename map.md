@@ -56,3 +56,130 @@ map.get(1)   // undefined
 ```
 
 JS对象的属性键值将首先被装换为字符串，但由于不可变数组的键可以为任意类型，所以`get()`的参数将不会改变。
+
+###### 静态方法
+
+##### Map.isMap()
+
+但提供的值为Map时返回true。
+
+```
+Map.isMap(maybeMap: any): boolean
+```
+
+例
+
+```
+const { Map } = require('immutable')
+Map.isMap({}) // false
+Map.isMap(Map()) // true
+```
+
+###### 成员
+
+##### size
+
+```
+size
+```
+
+###### 持久化修改
+
+##### set()
+
+返回一个在原Map基础上包含了新的键值对的新Map。如果key在原函数中已经有相等的存在，那么他将会被替换。
+
+```
+set(key: K, value: V): this
+```
+
+例
+
+```
+const { Map } = require('immutable')
+const originalMap = Map()
+const newerMap = originalMap.set('key', 'value')
+const newestMap = newerMap.set('key', 'newer value')
+
+originalMap
+// Map {}
+newerMap
+// Map { "key": "value" }
+newestMap
+// Map { "key": "newer value" }
+```
+
+注意：`set`可以在`withMutations`中使用。
+
+##### delete()
+
+返回一个新的不包含`key`的新Map。
+
+```
+delete(key: K): this
+```
+
+别名
+
+```
+remove()
+```
+
+注意：`delete`在IE8中不能安全地使用，提供是为了镜像ES6中集合的API。
+
+```
+const { Map } = require('immutable')
+const originalMap = Map({
+  key: 'value',
+  otherKey: 'other value'
+})
+// Map { "key": "value", "otherKey": "other value" }
+originalMap.delete('otherKey')
+// Map { "key": "value" }
+```
+
+注意：`delete`可以在`withMutations`中使用。
+
+##### deleteAll()
+
+返回一个不包含所有提供的`key`的新Map。
+
+```
+deleteAll(keys: Iterable<K>): this
+```
+
+别名
+
+```
+removeAll()
+```
+
+示例
+
+```
+const { Map } = require('immutable')
+const names = Map({ a: "Aaron", b: "Barry", c: "Connor" })
+names.deleteAll([ 'a', 'c' ])
+// Map { "b": "Barry" }
+```
+
+注意：`deleteAll`可以在`withMutations`中使用。
+
+##### clear()
+
+返回一个不包含任何键或值的新Map。
+
+```
+clear(): this
+```
+
+示例
+
+```
+const { Map } = require('immutable')
+Map({ key: 'value' }).clear()
+// Map {}
+```
+
+注意：`clear`可以在`withMutations`中使用。
+
