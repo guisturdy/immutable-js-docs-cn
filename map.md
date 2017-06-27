@@ -183,3 +183,104 @@ Map({ key: 'value' }).clear()
 
 注意：`clear`可以在`withMutations`中使用。
 
+##### update()
+
+将`key`对应的值传入`updater`方法，使用此方法返回的值设置返回的新的Map对应位置的值。
+
+```
+update(key: K, notSetValue: V, updater: (value: V) => V): this
+update(key: K, updater: (value: V) => V): this
+update<R>(updater: (value: this) => R): R
+```
+
+**重载**
+
+`Collection#update`
+
+与`map.set(key, updater(map.get(key)))`效果类似。
+
+```
+const { Map } = require('immutable')
+const aMap = Map({ key: 'value' })
+const newMap = aMap.update('key', value => value + value)
+// Map { "key": "valuevalue" }
+```
+
+这是最常用与在结构化的数据集合上的方法。例如，为了能够在一个层叠的`List`上进行`.push()`操作，`update`和`push`会同时使用。
+
+```
+const aMap = Map({ nestedList: List([ 1, 2, 3 ]) })
+const newMap = aMap.update('nestedList', list => list.push(4))
+// Map { "nestedList": List [ 1, 2, 3, 4 ] }
+```
+
+当提供了`notSetValue`，当Map中键对应位置未设置值时他会被提供给`updater`方法。
+
+```
+const aMap = Map({ key: 'value' })
+const newMap = aMap.update('noKey', 'no value', value => value + value)
+// Map { "key": "value", "noKey": "no valueno value" }
+```
+
+如果`updater`返回了与原数据相同的值，那么Map将不会被改变。即使提供了`notSetValue`也是一样。
+
+```
+const aMap = Map({ apples: 10 })
+const newMap = aMap.update('oranges', 0, val => val)
+// Map { "apples": 10 }
+assert(newMap === map);
+```
+
+在ES2015或更高的代码环境中，不建议使用`notSetValue`来支持函数变量默认值。这有助于避免与上述功能有任何潜在的混淆。
+
+这是与默认写法不同的写法将出现的结果的例子：
+
+```
+const aMap = Map({ apples: 10 })
+const newMap = aMap.update('oranges', (val = 0) => val)
+// Map { "apples": 10, "oranges": 0 }
+```
+
+如果没提供键，则会返回`updater`的返回值。
+
+```
+const aMap = Map({ key: 'value' })
+const result = aMap.update(aMap => aMap.get('key'))
+// "value"
+```
+
+这将是一个很有用的用法来将两个普通方法链式调用。RxJS中为"let"，lodash中为"thru"。
+
+```
+function sum(collection) {
+  return collection.reduce((sum, x) => sum + x, 0)
+}
+
+Map({ x: 1, y: 2, z: 3 })
+  .map(x => x + 1)
+  .filter(x => x % 2 === 0)
+  .update(sum)
+// 6
+```
+
+注意：`update(key)`可以在`withMutations`中使用。
+
+##### merge()
+
+返回一个新的Map由原Map合并了提供的集合（或者JS对象）。换而言之，这个方法将每个集合中的所有元素都设置到了新的Map。
+
+```
+merge(...collections: Array<Collection<K, V> | {[key: string]: V}>): this
+```
+
+如果提供的用来`merge`的值不是一个集合（`isCollection`返回false）那么在合并之前它将会被`fromJS`深度地转换。然后，如果提供的值是一个集合，但包含了非集合的JS对象或数组，这些嵌套值将会被保留。
+
+```
+const { Map } = require('immutable')
+const one = Map({ a: 10, b: 20, c: 30 })
+const two = Map({ b: 40, a: 50, d: 60 })
+one.merge(two) // Map { "a": 50, "b": 40, "c": 30, "d": 60 }
+two.merge(one) // Map { "b": 20, "a": 10, "d": 60, "c": 30 }
+```
+
+注意：`merge`可以在`withMutations`中使用。
