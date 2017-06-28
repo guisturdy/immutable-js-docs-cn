@@ -284,3 +284,74 @@ two.merge(one) // Map { "b": 20, "a": 10, "d": 60, "c": 30 }
 ```
 
 注意：`merge`可以在`withMutations`中使用。
+
+##### mergeWith()
+
+和`mgere()`类似，`mergeWith()`将原集合与提供的集合（或者JS对象）合并返回为新的Map，当它能使用`merge`来处理冲突。
+
+```
+mergeWith(
+    merger: (oldVal: V, newVal: V, key: K) => V,
+    ...collections: Array<Collection<K, V> | {[key: string]: V}>
+): this
+```
+
+例
+
+```
+const { Map } = require('immutable')
+const one = Map({ a: 10, b: 20, c: 30 })
+const two = Map({ b: 40, a: 50, d: 60 })
+one.mergeWith((oldVal, newVal) => oldVal / newVal, two)
+// { "a": 0.2, "b": 0.5, "c": 30, "d": 60 }
+two.mergeWith((oldVal, newVal) => oldVal / newVal, one)
+// { "b": 2, "a": 5, "d": 60, "c": 30 }
+```
+
+注意：`mergeWith`可以在`withMutations`中使用。
+
+##### mergeDeep()
+
+和`merge()`类似，但当两个集合冲突时，依然会合并他们，并且能深层地处理嵌套。
+
+```
+const { Map } = require('immutable')
+const one = Map({ a: Map({ x: 10, y: 10 }), b: Map({ x: 20, y: 50 }) })
+const two = Map({ a: Map({ x: 2 }), b: Map({ y: 5 }), c: Map({ z: 3 }) })
+one.mergeDeep(two)
+// Map {
+//   "a": Map { "x": 2, "y": 10 },
+//   "b": Map { "x": 20, "y": 5 },
+//   "c": Map { "z": 3 }
+// }
+```
+
+注意：`mergeDeep`可以在`withMutations`中使用。
+
+##### mergeDeepWith()
+
+和`mergeDeep()`类似，但当两个非集合冲突时，使用`merger`来觉定结果。
+
+```
+mergeDeepWith(
+merger: (oldVal: V, newVal: V, key: K) => V,
+...collections: Array<Collection<K, V> | {[key: string]: V}>
+): this
+```
+
+例
+
+```
+const { Map } = require('immutable')
+const one = Map({ a: Map({ x: 10, y: 10 }), b: Map({ x: 20, y: 50 }) })
+const two = Map({ a: Map({ x: 2 }), b: Map({ y: 5 }), c: Map({ z: 3 }) })
+one.mergeDeepWith((oldVal, newVal) => oldVal / newVal, two)
+// Map {
+//   "a": Map { "x": 5, "y": 10 },
+//   "b": Map { "x": 20, "y": 10 },
+//   "c": Map { "z": 3 }
+// }
+```
+
+注意：`mergeDeepWith`可以在`withMutations`中使用。
+
