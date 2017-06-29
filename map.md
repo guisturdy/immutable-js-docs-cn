@@ -355,3 +355,144 @@ one.mergeDeepWith((oldVal, newVal) => oldVal / newVal, two)
 
 注意：`mergeDeepWith`可以在`withMutations`中使用。
 
+###### 深度持久化
+
+##### setIn()
+
+在原Map的`keyPath`位置设置值为`value`并返回为新Map。如果`keyPath`位置无值，那么新的不可变Map将会创建此位置的值。
+
+```
+setIn(keyPath: Iterable<any>, value: any): this
+```
+
+例
+
+```
+const { Map } = require('immutable')
+const originalMap = Map({
+  subObject: Map({
+    subKey: 'subvalue',
+    subSubObject: Map({
+      subSubKey: 'subSubValue'
+    })
+  })
+})
+
+const newMap = originalMap.setIn(['subObject', 'subKey'], 'ha ha!')
+// Map {
+//   "subObject": Map {
+//     "subKey": "ha ha!",
+//     "subSubObject": Map { "subSubKey": "subSubValue" }
+//   }
+// }
+
+const newerMap = originalMap.setIn(
+  ['subObject', 'subSubObject', 'subSubKey'],
+  'ha ha ha!'
+)
+// Map {
+//   "subObject": Map {
+//     "subKey": "ha ha!",
+//     "subSubObject": Map { "subSubKey": "ha ha ha!" }
+//   }
+// }
+```
+
+如果指定位置存在值，但没有`.set()`方法（如Map和List），此时将会抛出异常。
+
+注意：`setIn`可以在`withMutations`中使用。
+
+##### deleteIn()
+
+返回一个移除了原Map`keyPath`位置的新Map。如果`keyPath`处无值，那么将不会发生改变。
+
+```
+deleteIn(keyPath: Iterable<any>): this
+```
+
+别名
+
+`removeIn()`
+
+注意：`removeIn`可以在`withMutations`中使用。
+
+##### updateIn()
+
+在指定索引位置调用`updater`，并返回为新Map。
+
+```
+updateIn(
+keyPath: Iterable<any>,
+notSetValue: any,
+updater: (value: any) => any
+): this
+updateIn(keyPath: Iterable<any>, updater: (value: any) => any): this
+```
+
+这是经常会在层叠的数据集合上使用的方法。如，为了在层叠的`List`上进行`push()`操作，`updateIn`和`push`会同时使用：
+
+```
+const { Map, List } = require('immutable')
+const map = Map({ inMap: Map({ inList: List([ 1, 2, 3 ]) }) })
+const newMap = map.updateIn(['inMap', 'inList'], list => list.push(4))
+// Map { "inMap": Map { "inList": List [ 1, 2, 3, 4 ] } }
+```
+
+如果`keyPath`位置没有值，那么不可变`Map`将会在此位置创建这个键。如果`keyPath`指定位置为定义值，那么`updater`方法将会使用`notSetValue`来调用，如果`notSetValue`未提供，那么将会传入`undefined`。
+
+```
+const map = Map({ a: Map({ b: Map({ c: 10 }) }) })
+const newMap = map.updateIn(['a', 'b', 'c'], val => val * 2)
+// Map { "a": Map { "b": Map { "c": 20 } } }
+```
+
+如果`updater`方法返回了和原值一样的值，那么将不会发生改变，即使提供了`notSetValue`。
+
+```
+const map = Map({ a: Map({ b: Map({ c: 10 }) }) })
+const newMap = map.updateIn(['a', 'b', 'x'], 100, val => val)
+// Map { "a": Map { "b": Map { "c": 10 } } }
+assert(newMap === map)
+```
+
+当处在ES2015或者更高环境下，不推荐使用`notSetValue`来实现函数变量默认值。这有助于避免任何可能导致与上述特性不符的困惑。
+
+这里提供一个设置了函数变量默认值的例子，以展示这种写法将产生的不同表现：
+
+```
+const map = Map({ a: Map({ b: Map({ c: 10 }) }) })
+const newMap = map.updateIn(['a', 'b', 'x'], (val = 100) => val)
+// Map { "a": Map { "b": Map { "c": 10, "x": 100 } } }
+```
+
+如果指定位置存在值，但没有`.set()`方法（如Map和List），此时将会抛出异常。
+
+##### mergeIn()
+
+一个`updateIn`和`merge`的结合体，会一个新的Map在指定路径那个点上执行合并操作。换而言之，这两条语句效果相同：
+
+```
+map.updateIn(['a', 'b', 'c'], abc => abc.merge(y))
+map.mergeIn(['a', 'b', 'c'], y)
+```
+
+```
+mergeIn(keyPath: Iterable<any>, ...collections: Array<any>): this
+```
+
+注意：`mergeIn`可以在`withMutations`中使用。
+
+##### mergeDeepIn()
+
+一个`updateIn`和`mergeDeep`的结合体，会一个新的Map在指定路径那个点上执行合并操作。换而言之，这两条语句效果相同：
+
+```
+map.updateIn(['a', 'b', 'c'], abc => abc.mergeDeep(y))
+map.mergeDeepIn(['a', 'b', 'c'], y)
+```
+
+```
+mergeDeepIn(keyPath: Iterable<any>, ...collections: Array<any>): this
+```
+
+注意：`mergeDeepIn`可以在`withMutations`中使用。
