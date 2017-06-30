@@ -496,3 +496,75 @@ mergeDeepIn(keyPath: Iterable<any>, ...collections: Array<any>): this
 ```
 
 注意：`mergeDeepIn`可以在`withMutations`中使用。
+
+###### 系列算法
+
+##### concat()
+
+将传入的集合与当前集合合并返回为新的Map。
+
+```
+concat<KC, VC>(...collections: Array<Iterable<[KC, VC]>>): Map<K | KC, V | VC>
+concat<C>(...collections: Array<{[key: string]: C}>): Map<K | string, V | C>
+```
+
+继承
+
+`Collection#concat`
+
+##### map()
+
+使用`mapper`遍历所有值，将其返回的值返回为新的Map。
+
+```
+map<M>(mapper: (value: V, key: K, iter: this) => M, context?: any): Map<K, M>
+```
+
+继承自
+
+`Collection#map`
+
+例
+
+```
+Map({ a: 1, b: 2 }).map(x => 10 * x)
+// Map { a: 10, b: 20 }
+```
+
+注意：`map()`始终返回一个新的实例，即使它产生的结果与原Map一致。
+
+##### mapEntries()
+
+```
+mapEntries<KM, VM>(
+mapper: (entry: [K, V], index: number, iter: this) => [KM, VM],
+context?: any
+): Map<KM, VM>
+```
+
+继承自
+
+`Collection.Keyed#mapEntries`
+
+见
+
+Collection.Keyed.mapEntries
+
+
+##### flatMap()
+
+返回一个新的扁平化的Map。
+
+```
+flatMap<KM, VM>(
+mapper: (value: V, key: K, iter: this) => Iterable<[KM, VM]>,
+context?: any
+): Map<KM, VM>
+```
+
+继承自
+
+`Collection#flatMap`
+
+与`data.map(...).flatten(true)`效果一致。
+
