@@ -568,3 +568,147 @@ context?: any
 
 与`data.map(...).flatten(true)`效果一致。
 
+##### filter()
+
+返回只有由方法`predicate`返回为true的那些条目组成的新的Map。
+
+```
+filter<F>(
+predicate: (value: V, key: K, iter: this) => boolean,
+context?: any
+): Map<K, F>
+filter(predicate: (value: V, key: K, iter: this) => any, context?: any): this
+```
+
+重载
+
+`Collection#filter`
+
+注意：`filter()`总是返回一个新的实例，即使没有过滤任何值。
+
+##### filterNot()
+
+返回一个同类型的集合，只包含`predicate`方法返回为false的那些值。
+
+```
+filterNot(
+predicate: (value: V, key: K, iter: this) => boolean,
+context?: any
+): this
+```
+
+继承自
+
+`Collection#filterNot`
+
+例
+
+```
+const { Map } = require('immutable')
+Map({ a: 1, b: 2, c: 3, d: 4}).filterNot(x => x % 2 === 0)
+// Map { "a": 1, "c": 3 }
+```
+
+注意：`filterNot()`总是返回一个新的实例，即使没有过滤任何值。
+
+##### reverse()
+
+返回一个同类型逆序的集合。
+
+```
+reverse(): this
+```
+
+继承自
+
+`Collection#reverse`
+
+##### sort()
+
+返回一个新的同类型包含相同条目由`comparator`排序的新的集合。
+
+```
+sort(comparator?: (valueA: V, valueB: V) => number): this
+```
+
+继承自
+
+`Collection#sort`
+
+如果`comparator`未提供，默认比较器为`<`和`>`。
+
+`comparator(valueA, valueB)`:
+
+* 返回值为`0`这个元素将不会被交换。
+* 返回值为`-1`(或者任意负数)`valueA`将会移到`valueB`之前。 
+* 返回值为`1`(或者任意正数)`valueA`将会移到`valueB`之后。 
+* 为空，这将会返回相同的值和顺序。
+
+当被排序的集合没有定义顺序，那么将会返回同等的有序集合。比如`map.sort()`将返回OrderedMap。
+
+```
+const { Map } = require('immutable')
+Map({ "c": 3, "a": 1, "b": 2 }).sort((a, b) => {
+  if (a < b) { return -1; }
+  if (a > b) { return 1; }
+  if (a === b) { return 0; }
+});
+// OrderedMap { "a": 1, "b": 2, "c": 3 }
+```
+
+注意：`sort()`总是返回一个新的实例，即使它没有改变排序。
+
+##### sortBy()
+
+与`sort`类似，但能接受一个`comparatorValueMapper`方法，它允许通过更复杂的方式进行排序：
+
+```
+sortBy<C>(
+    comparatorValueMapper: (value: T, key: number, iter: this) => C,
+    comparator?: (valueA: C, valueB: C) => number
+): this
+```
+
+继承自
+
+`Collection#sortBy`
+
+例
+
+```
+hitters.sortBy(hitter => hitter.avgHits)
+```
+
+注意：`sortBy()`总是返回一个新的实例，即使它没有改变排序。
+
+##### groupBy()
+
+返回一个`Collection.Keyeds`的`Collection.keyed`，由传入的`grouper`方法分组。
+
+```
+groupBy<G>(
+    grouper: (value: T, key: number, iter: this) => G,
+    context?: any
+): Seq.Keyed<G, Collection<number, T>>
+```
+
+继承自
+
+`Collection#groupBy`
+
+```
+const { List, Map } = require('immutable')
+const listOfMaps = List([
+  Map({ v: 0 }),
+  Map({ v: 1 }),
+  Map({ v: 1 }),
+  Map({ v: 0 }),
+  Map({ v: 2 })
+])
+const groupsOfMaps = listOfMaps.groupBy(x => x.get('v'))
+// Map {
+//   0: List [ Map{ "v": 0 }, Map { "v": 0 } ],
+//   1: List [ Map{ "v": 1 }, Map { "v": 1 } ],
+//   2: List [ Map{ "v": 2 } ],
+// }
+```
