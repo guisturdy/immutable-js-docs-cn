@@ -106,7 +106,7 @@ hash\(\)方法是Immutable确认两个值是否相等和决定这些值如何存
 
 List是有序的密集型集合，类似于JS的数组（Array）。
 
-##### Map
+##### [Map](/map.md)
 
 不可变Map是无序的可持久化的Collection.Keyed\(key, value\)键值对，存取复杂度为`O(log32 N)`。
 
