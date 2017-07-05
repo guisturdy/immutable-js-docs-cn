@@ -497,6 +497,52 @@ mergeDeepIn(keyPath: Iterable<any>, ...collections: Array<any>): this
 
 注意：`mergeDeepIn`可以在`withMutations`中使用。
 
+###### 暂时改变
+
+##### withMutations()
+
+每次你调用以上方法，它都会新建一个不可变Map。如果一个纯函数调用了多个上述方法来产生需要的值，那么产生的这些中间不可变Map将会对性能和内存造成负担。
+
+```
+withMutations(mutator: (mutable: this) => any): this
+```
+
+如果你需要进行一系列变化来产生新的不可变Map，用`withMutations()`对此Map创造一个临时的可变拷贝的方式来进程变化操作，可以极大地提升性能。事实上这是像`merge`这样复杂地操作实现地方式。
+
+以下例子将会创造2个而不是4个新Map：
+
+```
+const { Map } = require('immutable')
+const map1 = Map()
+const map2 = map1.withMutations(map => {
+  map.set('a', 1).set('b', 2).set('c', 3)
+})
+assert(map1.size === 0)
+assert(map2.size === 3)
+```
+
+注意：不是所有方法都可以在可变的集合或者是在`withMutations`中使用！查看每个方法的文档可以确认他是否能够安全地使用`withMutations`。
+
+##### asMutable()
+
+另外一种避免产生中间值的不可变Map的方式是创建一个这个集合的可变拷贝。可变拷贝*总是*返回`this`，因此不要用他们来进行比较。你的函数不要将这个可变集合返回出去，请只在函数内使用它来构建新的集合。如果可能的话使用`withMutations`，因为他提供了更易用地API。
+
+```
+asMutable(): this
+```
+
+注意：如果一个集合已经是可变的，`asMutable`将会返回他本身。
+
+注意：不是所有方法都可以在可变的集合或者是在`withMutations`中使用！查看每个方法的文档可以确认他是否能够安全地使用`withMutations`。
+
+##### asImmutable()
+
+与`asMutable`谓之阳所对应的阴。因为他作用于可变集合，此操作是*可变地*并返回自身。一旦执行，这个可变的拷贝将会变成不可变的，这样即可将他安全的从方法中返回出去。
+
+```
+asImmutable(): this
+```
+
 ###### 系列算法
 
 ##### concat()
