@@ -110,7 +110,7 @@ List是有序的密集型集合，类似于JS的数组（Array）。
 
 不可变Map是无序的可持久化的Collection.Keyed\(key, value\)键值对，存取复杂度为`O(log32 N)`。
 
-##### OrderedMap
+##### [OrderedMap](/ordered_map.md)
 
 一种能够保证迭代顺序为元素进入顺序的Map。
 
