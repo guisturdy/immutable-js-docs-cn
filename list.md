@@ -473,7 +473,7 @@ asMutable(): this
 withMutations(mutator: (mutable: this) => any): this
 ```
 
-##### asImmutable\(\)
+##### asImmutable\(\)
 
 ```
 asImmutable(): this
@@ -1248,7 +1248,6 @@ hitters.minBy(hitter => hitter.avgHits)
 ###### 等值比较
 
 ##### equals()
-
 如果当前集合和另一个集合比较为相等，那么返回true，是否相等由`Immutable.is()`定义。
 
 ```

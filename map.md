@@ -249,7 +249,7 @@ const result = aMap.update(aMap => aMap.get('key'))
 // "value"
 ```
 
-这将是一个很有用的用法来将两个普通方法链式调用。RxJS中为"let"，lodash中为"thru"。
+这将是一个很有用的方法来将两个普通方法链式调用。RxJS中为"let"，lodash中为"thru"。
 
 ```
 function sum(collection) {
