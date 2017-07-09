@@ -118,7 +118,7 @@ List是有序的密集型集合，类似于JS的数组（Array）。
 
 一种存取复杂度为`O(log32 N)`的无重复值的集合。
 
-##### OrderedSet
+##### [OrderedSet](/ordered_set.md)
 
 一种能够保证迭代顺序为元素添加\([add](#)\)顺序的Set。
 
