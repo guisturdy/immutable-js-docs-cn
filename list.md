@@ -576,6 +576,39 @@ const b = List([ 4, 5, 6 ]);
 const c = a.zip(b); // List [ [ 1, 4 ], [ 2, 5 ], [ 3, 6 ] ]
 ```
 
+##### zipWith()
+
+将List与所提供集合使用自定义`zipper`方法进行拉链咬合\(zipped\)。
+
+```
+zipWith<U, Z>(
+zipper: (value: T, otherValue: U) => Z,
+otherCollection: Collection<any, U>
+): List<Z>
+zipWith<U, V, Z>(
+zipper: (value: T, otherValue: U, thirdValue: V) => Z,
+otherCollection: Collection<any, U>,
+thirdCollection: Collection<any, V>
+): List<Z>
+zipWith<Z>(
+zipper: (...any: Array<any>) => Z,
+...collections: Array<Collection<any, any>>
+): List<Z>
+```
+
+覆盖
+
+`Collection.Indexed#zipWith`
+
+例
+
+```
+const a = List([ 1, 2, 3 ]);
+const b = List([ 4, 5, 6 ]);
+const c = a.zipWith((a, b) => a + b, b);
+// List [ 5, 7, 9 ]
+```
+
 ##### [Symbol.iterator]
 
 ```

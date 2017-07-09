@@ -572,8 +572,7 @@ toSetSeq(): Seq.Set<T>
 
 ###### 等值比较
 
-##### 
-equals()
+##### equals()
 如果当前集合和另一个集合比较为相等，那么返回true，是否相等由`Immutable.is()`定义。
 
 ```
