@@ -126,13 +126,11 @@ List是有序的密集型集合，类似于JS的数组（Array）。
 
 Stack（栈）是一种支持复杂度为`O(1)`的高效添加和删除数据的集合，在栈顶添加和删除数据使用`unshift(v)`和`shift()`。
 
-##### Range\(\)
+##### [Range\(\)](/range.md)
 
-返回由Seq.Indexed指明的从start到end由step指定增量的数值（包含start，不包含end），默认值start为0，step
+返回由Seq.Indexed指明的从start到end由step指定增量的数值（包含start，不包含end），默认值start为0，step为1，end为无穷大。当start与end相等时，返回一个空范围。
 
-为1，end为无穷大。当start与end相等时，返回一个空范围。
-
-##### Repeat\(\)
+##### [Repeat\(\)](/repeat.md)
 
 返回右Seq.Indexed指明的重复times次数的value，当times未定义时，返回值为无穷Seq的value。
 
