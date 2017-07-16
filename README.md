@@ -134,15 +134,15 @@ Stack（栈）是一种支持复杂度为`O(1)`的高效添加和删除数据的
 
 返回右Seq.Indexed指明的重复times次数的value，当times未定义时，返回值为无穷Seq的value。
 
-##### Record
+##### [Record](/record.md)
 
 建立一个继承自Record的新类型。它类似于JS的对象，但需要明确指定可设置的键及其对应的值。
 
-##### Seq
+##### [Seq](/seq.md)
 
 相当于一系列值，但不能具体表现为某种数据结构。
 
-##### Collection {#collection}
+##### [Collection](/collection.md)
 
 Collection是一组可迭代的键值对集合，它也是所有immutable的基类，确保它们能使用集合的方法（如map，filter）。
 

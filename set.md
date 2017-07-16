@@ -234,18 +234,6 @@ asImmutable(): this
 
 ###### 序列算法
 
-##### cancat\(\)
-
-将其他的值或者集合与这个Set串联起来返回为一个新Set。
-
-```
-concat<C>(...valuesOrCollections: Array<Iterable<C> | C>): Set<T | C>
-```
-
-覆盖
-
-`Collection#concat`
-
 ##### map\(\)
 
 返回一个由传入的`mapper`函数处理过值的新Set。
@@ -1081,6 +1069,17 @@ List([ 'dog', 'frog', 'cat', 'hat', 'god' ])
 
 ###### 组合
 
+##### cancat\(\)
+
+将其他的值或者集合与这个Set串联起来返回为一个新Set。
+
+```
+concat<C>(...valuesOrCollections: Array<Iterable<C> | C>): Set<T | C>
+```
+
+覆盖
+
+`Collection#concat`
 ##### flatten()
 
 压平嵌套的集合。
